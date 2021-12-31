@@ -268,15 +268,15 @@ as a communication channel."
 
     (cond
      ((string= entrytype "cvemployer")
-      (format "\n\\cventry{%s}{%s}{}{}{}\n%s\n"
+      (format "\n\\cventry\n{}\n{%s}\n{%s}\n{%s}\n{%s}\n"
               title
-              (format "%s\\hfill %s" (org-cv-utils--format-time-window from-date to-date) location)
-              contents)
-      )
+              location
+              (org-cv-utils--format-time-window from-date to-date)
+              contents))
      ((string= entrytype "cventry")
       (format "\n\\cventry\n{%s}\n{%s}\n{%s}\n{%s}\n{%s%s}\n"
-              title
               employer
+              title
               location
               (org-cv-utils--format-time-window from-date to-date)
               (org-awesomecv--cventry-right-img-code right-img)
@@ -289,9 +289,9 @@ as a communication channel."
               contents))
      ((string= entrytype "cvschool")
       (format "\n\\cventry\n{%s}\n{%s}\n{%s}\n{%s}\n{%s%s}\n"
+              employer
               title
               location
-              employer
               (org-cv-utils--format-time-window from-date to-date)
               (org-awesomecv--cventry-right-img-code right-img)
               contents))
